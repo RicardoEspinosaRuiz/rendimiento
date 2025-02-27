@@ -1,0 +1,19 @@
+import cadquery as cq
+
+n=3
+
+# Crear la matriz de cubos
+matriz = cq.Workplane("XY")  # Plano de trabajo inicial
+for x in range(n):
+    for y in range(n):
+        for z in range(n):
+            # Calcular la posición de cada cubo
+            pos_x = x * (14)
+            pos_y = y * (14)
+            pos_z = z * (14)
+            # Añadir el cubo en la posición calculada
+            matriz = matriz.union(
+                cq.Workplane("XY")
+                .box(12,12,12)
+                .translate((pos_x, pos_y, pos_z))
+            )
